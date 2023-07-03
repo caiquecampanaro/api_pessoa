@@ -1,6 +1,0 @@
-INSERT INTO pessoa ( id, nome, sobrenome ) VALUES((VALUES NEXT VALUE FOR PESSOA_SEQUENCE), 'Caio', 'Fernandes');
-INSERT INTO pessoa ( id, nome, sobrenome ) VALUES((VALUES NEXT VALUE FOR PESSOA_SEQUENCE), 'Caíque', 'Cavalcante');
-INSERT INTO contato VALUES ((VALUES NEXT VALUE FOR CONTATO_SEQUENCE) , ( SELECT id FROM PESSOA WHERE nome='Caio' and sobrenome= 'Fernandes'), 'EMAIL', 'Caio@lolzeiro.com.br');  
-INSERT INTO contato VALUES ((VALUES NEXT VALUE FOR CONTATO_SEQUENCE) , ( SELECT id FROM PESSOA WHERE nome='Caíque' and sobrenome= 'Cavalcante'), 'EMAIL', 'caique@lolzeiro.com.br');
-INSERT INTO endereco (id, pessoa_id, cidade, estado, bairro, rua, numero) VALUES ((VALUES NEXT VALUE FOR ENDERECO_SEQUENCE), (SELECT id FROM PESSOA WHERE nome= 'Caio' and sobrenome= 'Fernandes'), 'Fortaleza', 'Ceará', 'Parque dois irmãos', 'C', '155');
-INSERT INTO endereco (id, pessoa_id, cidade, estado, bairro, rua, numero) VALUES ((VALUES NEXT VALUE FOR ENDERECO_SEQUENCE), (SELECT id FROM PESSOA WHERE nome= 'Caíque' and sobrenome= 'Cavalcante'), 'Fortaleza', 'Ceará', 'Itaperi', 'Américo Vespúcio', '1131');

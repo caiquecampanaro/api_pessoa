@@ -6,4 +6,5 @@ import com.mule.api.models.Pessoa;
 
 public interface PessoaRepository extends JpaRepository<Pessoa, Long>{
 
+
 }

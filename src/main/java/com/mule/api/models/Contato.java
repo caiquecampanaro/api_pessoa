@@ -22,12 +22,12 @@ import lombok.Data;
 public class Contato {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "contato_sequence")
-	@SequenceGenerator(allocationSize = 1, name = "contato_sequence")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "contato_sequence")
+	@SequenceGenerator(allocationSize = 1, name = "contato_sequence", sequenceName = "contato_sequence")
 	private Long id;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_pessoa", nullable = false )
+	@JoinColumn(name = "pessoa_id", nullable = false )
 	@JsonBackReference
 	private Pessoa pessoa;
 	

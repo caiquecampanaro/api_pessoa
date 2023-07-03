@@ -19,8 +19,8 @@ import lombok.Data;
 public class Endereco {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "endereco_sequence")
-	@SequenceGenerator(allocationSize = 1, name = "endereco_sequence")
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "endereco_sequence")
+	@SequenceGenerator(allocationSize = 1, name = "endereco_sequence", sequenceName = "endereco_sequence")
 	private Long id;
 	
 	@OneToOne(cascade = CascadeType.ALL)
