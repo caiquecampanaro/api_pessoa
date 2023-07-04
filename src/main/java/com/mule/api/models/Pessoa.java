@@ -24,6 +24,7 @@ import lombok.Setter;
 public class Pessoa {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 //	@GeneratedValue(strategy = GenerationType.AUTO, generator = "pessoa_sequence")
 	@SequenceGenerator(allocationSize = 1, name = "pessoa_sequence", sequenceName = "pessoa_sequence")
 	@Getter @Setter
@@ -60,6 +61,14 @@ public class Pessoa {
 		this.endereco = endereco;
 		this.nome = nome;
 		this.sobrenome = sobrenome;
+	}
+	
+	public Pessoa (List<Contato> contatos, Endereco endereco, String nome, String sobrenome) {
+		this.contatos = contatos;
+		this.endereco = endereco;
+		this.nome = nome; 
+		this.sobrenome = sobrenome;
+		
 	}
 	
 }

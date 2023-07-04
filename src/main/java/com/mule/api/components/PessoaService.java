@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mule.api.dtos.ContatoDTO;
+import com.mule.api.dtos.EnderecoDTO;
 import com.mule.api.models.Contato;
 import com.mule.api.models.Endereco;
 import com.mule.api.models.Pessoa;
@@ -46,8 +48,8 @@ public class PessoaService {
 		contatoRepository.saveAll(pessoa.getContatos());
 	}
 
-	public Pessoa salvarPessoa (List<Contato> contatos, Endereco endereco, String nome, String sobrenome) {
-		Pessoa pessoa = new Pessoa(null, contatos, endereco, nome, sobrenome);
+	public Pessoa salvarPessoa ( List<Contato> contatos, Endereco endereco, String nome, String sobrenome) {
+		Pessoa pessoa = new Pessoa( contatos, endereco, nome, sobrenome);
 		return pessoaRepository.save(pessoa);
 	}
 	
@@ -61,7 +63,6 @@ public class PessoaService {
 
 	public void deletar(Long id) {
 		pessoaRepository.deleteById(id);
-	}
 
 //	@Override
 //	public Pessoa convert() {
@@ -108,5 +109,6 @@ public class PessoaService {
 //	public Pessoacomponets(Long id) {
 //		this.id = id;
 //	}
+	}
 
 }

@@ -19,13 +19,14 @@ import lombok.Data;
 public class Endereco {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 //	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "endereco_sequence")
 	@SequenceGenerator(allocationSize = 1, name = "endereco_sequence", sequenceName = "endereco_sequence")
 	private Long id;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "pessoa_id" , referencedColumnName = "id")
-	@JsonBackReference
+	@JsonBackReference	
 	private Pessoa pessoa;
 	
 	private String cidade;

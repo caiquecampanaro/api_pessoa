@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mule.api.components.PessoaService;
-import com.mule.api.dtos.PessoaDTO;
 import com.mule.api.models.Pessoa;
 import com.mule.api.repositories.PessoaRepository;
 
@@ -40,13 +39,13 @@ public class PessoaController {
 	}
 	
 	@PostMapping
-	public   ResponseEntity<Pessoa>  salvarPessoa (@RequestBody PessoaDTO pessoa) { 
-		service.salvarPessoa(pessoa.getContatos(), pessoa.getEndereco(), pessoa.getNome(), pessoa.getSobrenome());
+	public ResponseEntity<Pessoa>  salvarPessoa (@RequestBody Pessoa pessoa) { 
+		service.salvarPessoa( pessoa.getContatos(), pessoa.getEndereco(), pessoa.getNome(), pessoa.getSobrenome());
 		return new ResponseEntity<Pessoa>(HttpStatus.CREATED);
 	}
 
-	@DeleteMapping("{id}/deletar")
-	public  void deletar (Long id) {
+	@DeleteMapping("{id}")
+	public  void deletar (@PathVariable("id") Long id ) {
 		service.deletar(id);
 	}
 }
