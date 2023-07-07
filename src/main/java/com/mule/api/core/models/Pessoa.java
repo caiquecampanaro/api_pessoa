@@ -1,9 +1,11 @@
-package com.mule.api.models;
+package com.mule.api.core.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -24,18 +26,17 @@ import lombok.Setter;
 public class Pessoa {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	@GeneratedValue(strategy = GenerationType.AUTO, generator = "pessoa_sequence")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pessoa_sequence")
 	@SequenceGenerator(allocationSize = 1, name = "pessoa_sequence", sequenceName = "pessoa_sequence")
 	@Getter @Setter
 	private Long id;
 
-	@OneToMany(mappedBy = "pessoa", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "pessoa", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JsonManagedReference
 	@Getter @Setter
-	private List<Contato> contatos;
+	private List<Contato> contatos = new ArrayList<Contato>();
 
-	@OneToOne(mappedBy = "pessoa", fetch = FetchType.EAGER)
+	@OneToOne(mappedBy = "pessoa", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JsonManagedReference
 	@Getter @Setter
 	private Endereco endereco;
@@ -47,28 +48,5 @@ public class Pessoa {
 	@NonNull
 	@Getter @Setter
 	private String sobrenome;
-	
-	
-	public Pessoa(Long id, String nome, String sobrenome  ) {
-		this.id = id;
-		this.nome = nome;
-		this.sobrenome = sobrenome;
-	}
-	
-	public Pessoa(Long id,List<Contato> contatos , Endereco endereco,  String nome, String sobrenome  ) {
-		this.id = id;
-		this.contatos = contatos;
-		this.endereco = endereco;
-		this.nome = nome;
-		this.sobrenome = sobrenome;
-	}
-	
-	public Pessoa (List<Contato> contatos, Endereco endereco, String nome, String sobrenome) {
-		this.contatos = contatos;
-		this.endereco = endereco;
-		this.nome = nome; 
-		this.sobrenome = sobrenome;
-		
-	}
 	
 }

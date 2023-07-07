@@ -1,4 +1,4 @@
-package com.mule.api.models;
+package com.mule.api.core.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -19,12 +19,11 @@ import lombok.Data;
 public class Endereco {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "endereco_sequence")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "endereco_sequence")
 	@SequenceGenerator(allocationSize = 1, name = "endereco_sequence", sequenceName = "endereco_sequence")
 	private Long id;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "pessoa_id" , referencedColumnName = "id")
 	@JsonBackReference	
 	private Pessoa pessoa;
@@ -34,5 +33,6 @@ public class Endereco {
 	private String bairro;
 	private String rua;
 	private String numero;
+	private String complemento;
 	
 }

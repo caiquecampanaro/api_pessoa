@@ -1,8 +1,9 @@
-package com.mule.api.models;
+package com.mule.api.core.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.mule.api.enums.ContatoEnum;
+import com.mule.api.core.enums.ContatoEnum;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -22,11 +23,11 @@ import lombok.Data;
 public class Contato {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "contato_sequence")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "contato_sequence")
 	@SequenceGenerator(allocationSize = 1, name = "contato_sequence", sequenceName = "contato_sequence")
 	private Long id;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "pessoa_id", nullable = false )
 	@JsonBackReference
 	private Pessoa pessoa;

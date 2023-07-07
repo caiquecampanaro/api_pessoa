@@ -1,4 +1,4 @@
-package com.mule.api.components;
+package com.mule.api.core.interfaces;
 
 public interface ConvertEntity<T> {
 	

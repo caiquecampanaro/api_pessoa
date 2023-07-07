@@ -13,9 +13,10 @@ CREATE TABLE endereco (
 	pessoa_id int,
 	cidade VARCHAR(50),
 	estado VARCHAR(50),
-	bairro VARCHAR(50),
-	rua VARCHAR(100),
-	numero VARCHAR(10),
+	bairro VARCHAR(100),
+	rua VARCHAR(50),
+	complemento VARCHAR(100),
+	numero VARCHAR(5),
 	CONSTRAINT fk_pessoa
 		FOREIGN KEY(pessoa_id)
 			REFERENCES pessoa(id)
