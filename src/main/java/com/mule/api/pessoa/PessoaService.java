@@ -1,18 +1,13 @@
 package com.mule.api.pessoa;
 
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mule.api.core.models.Pessoa;
-import com.mule.api.core.repository.ContatoRepository;
-import com.mule.api.core.repository.EnderecoRepository;
 import com.mule.api.core.services.ContatoService;
 import com.mule.api.core.services.EnderecoService;
-import com.mule.api.pessoa.dto.PessoaDTO;
 import com.mule.api.pessoa.repository.PessoaRepository;
 
 import jakarta.transaction.Transactional;
